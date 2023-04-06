@@ -1,10 +1,11 @@
 <?php
 /**
- * Plugin Name:       create-block
+ * Plugin Name:       Roman Date Converter
+ * Description:  	  A custom block for Wordpress Gutenberg that converts English dates to dates using the ancient Roman calendar. Scaffolded with Create Block.
  * Requires at least: 5.8
  * Requires PHP:      7.0
  * Version:           0.1.0
- * Author:            The WordPress Contributors
+ * Author:            Celia Kelly + The WordPress Contributors
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       roman-date-converter
