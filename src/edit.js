@@ -32,7 +32,7 @@ export default function Edit() {
 	return (
 		<p { ...useBlockProps() }>
 			{ __(
-				'Roman Date Converter – hello from the editor!',
+				'Roman Date Converter block',
 				'roman-date-converter'
 			) }
 		</p>

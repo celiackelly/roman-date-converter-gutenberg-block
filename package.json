@@ -1,7 +1,8 @@
 {
 	"name": "roman-date-converter",
 	"version": "0.1.0",
-	"author": "The WordPress Contributors",
+	"author": "Celia Kelly + The WordPress Contributors",
+	"description": "A custom block for Wordpress Gutenberg that converts English dates to dates using the ancient Roman calendar",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
