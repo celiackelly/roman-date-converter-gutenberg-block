@@ -1,0 +1,42 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+ .wp-block-create-block-roman-date-converter {
+	padding: 2px;
+}
+
+.sr-only {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+  }
+  
+  fieldset {
+	border: none;
+  }
+  
+  .card {
+	background-color: #3c67be;
+	padding: 1rem;
+	border: 1px solid #282c34;
+	border-radius: 25px;
+	max-width: 75%;
+  }
+  
+  .italics {
+	font-style: italic;
+  }
+  
+  /*this leads to a bad experience, where clicking empty space to right of option toggles it*/
+  .options-fieldset {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+  }

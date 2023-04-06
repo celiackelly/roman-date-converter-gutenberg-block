@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "create-block/roman-date-converter",
+  "version": "0.1.0",
+  "title": "Roman Date Converter",
+  "category": "widgets",
+  "textdomain": "roman-date-converter",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./react-app/src/view.js"
+}
