@@ -97,7 +97,7 @@ export default function DateConverter() {
 
     if (!isDateSubmitted) {
         return (
-          <CardSection title="Find the Roman date for">
+          <CardSection className="form-card" title="Find the Roman date for:">
             <form method="post" onSubmit={handleSubmit}>
                 <DateFieldset 
                     month={month}
@@ -115,20 +115,23 @@ export default function DateConverter() {
                     yearDisplayOption={yearDisplayOption}
                     handleYearDisplayOptionChange={handleYearDisplayOptionChange}
                     />  
-                <Button 
-                    type="submit" 
-                    buttonText="Submit"></Button>
+                <div className='btn-group'>
+                    <Button 
+                        type="submit" 
+                        buttonText="Submit" />    
+                </div>
             </form>
           </CardSection>
         );
       } else {
           return (
-            <CardSection title="Converted date">
+            <CardSection className="results-card" title="Roman date:">
                 <p>{isAbbreviatedChecked ? abbreviateDate(romanDate) : romanDate}</p>
                 <label>
                     <input type="checkbox" name="abbreviated" checked={isAbbreviatedChecked} onChange={ (e)=> setIsAbbreviatedChecked(!isAbbreviatedChecked)}></input>
                     display abbreviated date
                 </label>
+                <div className='btn-group'>
                 <Button 
                     type="button" 
                     buttonText="Change options" 
@@ -139,6 +142,7 @@ export default function DateConverter() {
                     onClick={() => { 
                         setIsDateSubmitted(false); 
                         resetDate() }}/>
+                </div>
             </CardSection>
           );
       }

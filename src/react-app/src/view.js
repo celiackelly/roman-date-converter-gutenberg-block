@@ -1,5 +1,12 @@
 import { createRoot, render, createElement } from '@wordpress/element';
-import App from './App';
+import DateConverter from './components/DateConverter';
+
+function App() {
+  return (
+    <DateConverter />
+  );
+}
+
 
 addEventListener("DOMContentLoaded", (event) => {
   const domElement = document.getElementById( 'react-app' );
