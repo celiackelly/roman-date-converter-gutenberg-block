@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "title": "Roman Date Converter",
   "category": "widgets",
+  "icon": "calendar-alt",
   "textdomain": "roman-date-converter",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
