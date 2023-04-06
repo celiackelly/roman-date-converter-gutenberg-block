@@ -108,7 +108,6 @@ function DateConverter() {
     setDay(Number(e.target.value));
   }
   function handleYearChange(e) {
-    // const isBeforeRomeFounded = e.target.value > 753 && era === 'B.C. / B.C.E.'
     const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.checkBeforeRomeFounded)(day, month, e.target.value, era);
     if (isBeforeRomeFounded) {
       setYearDisplayOption(null);
@@ -116,7 +115,6 @@ function DateConverter() {
     setYear(Number(e.target.value));
   }
   function handleEraChange(e) {
-    // const isBeforeRomeFounded = year > 753 && e.target.value === 'B.C. / B.C.E.'
     const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.checkBeforeRomeFounded)(day, month, year, e.target.value);
     if (isBeforeRomeFounded) {
       setYearDisplayOption(null);
@@ -127,7 +125,6 @@ function DateConverter() {
     if (!e.target.checked) {
       setYearDisplayOption(null);
     }
-    // const isBeforeRomeFounded = year > 753 && era === 'B.C. / B.C.E.'
     const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.checkBeforeRomeFounded)(day, month, year, era);
     if (isBeforeRomeFounded) {
       setYearDisplayOption(null);

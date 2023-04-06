@@ -32,14 +32,12 @@ export default function DateConverter() {
     }
 
    function handleYearChange(e) {
-        // const isBeforeRomeFounded = e.target.value > 753 && era === 'B.C. / B.C.E.'
         const isBeforeRomeFounded = checkBeforeRomeFounded(day, month, e.target.value, era)
         if (isBeforeRomeFounded) { setYearDisplayOption(null) }
         setYear(Number(e.target.value));
    }
 
    function handleEraChange(e) {
-        // const isBeforeRomeFounded = year > 753 && e.target.value === 'B.C. / B.C.E.'
         const isBeforeRomeFounded = checkBeforeRomeFounded(day, month, year, e.target.value)
         if (isBeforeRomeFounded) { setYearDisplayOption(null) }
         setEra(e.target.value);
@@ -47,7 +45,6 @@ export default function DateConverter() {
 
     function handleDisplayYearChange(e) {
         if (!e.target.checked) { setYearDisplayOption(null) }
-        // const isBeforeRomeFounded = year > 753 && era === 'B.C. / B.C.E.'
         const isBeforeRomeFounded = checkBeforeRomeFounded(day, month, year, era)
         if (isBeforeRomeFounded) { setYearDisplayOption(null) }
         setIsDisplayYearChecked(!isDisplayYearChecked);
