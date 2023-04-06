@@ -44,16 +44,9 @@
 	border-radius: 25px;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	min-height: 450px;
   }
-
-//   .form-card {
-
-//   }
-
-//   .results-card {
-	
-//   }
 
   form {
 	display: flex;
@@ -66,14 +59,22 @@
 	padding: 0px 10px;
   }
 
-  form input[type="checkbox"] {
-	padding: 10px;
+ input[type="checkbox"], 
+ input[type="radio"] {
+	margin: 10px;
   }
 
-  .btn-group {
+ .btn-group {
 	display: flex;
-	justify-content: flex-end;
 	gap: 5px;
+  }
+
+  .form-card .btn-group {
+	justify-content: flex-end;
+  }
+
+  .results-card .btn-group {
+	justify-content: space-between;
   }
 
   .italics {
