@@ -18,23 +18,19 @@
 	overflow:hidden;
   }
 
-  h2 {
-	color: #6D1611;
-  }
-
   p {
 	text-align: center;
 	font-size: 1.5em;
   }
   
-  fieldset {
+  .card fieldset {
 	border: none;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 5px
   }
 
-  @media screen and (max-width: 512px) {
+  @media screen and (max-width: 360px) {
 	fieldset {
 		flex-direction: column;
 	}
@@ -62,10 +58,16 @@
   form {
 	display: flex;
 	flex-direction: column;
+	gap: 20px;
   }
   
-  input, select {
+  //needs more specificity 
+ form select {
 	padding: 0px 10px;
+  }
+
+  form input[type="checkbox"] {
+	padding: 10px;
   }
 
   .btn-group {
@@ -73,11 +75,6 @@
 	justify-content: flex-end;
 	gap: 5px;
   }
-//   button {
-// 	display: inline-block;
-// 	align-self: flex-end;
-// 	margin: 5px;
-//   }
 
   .italics {
 	font-style: italic;
@@ -87,6 +84,7 @@
 	text-align: left;
 	display: flex;
 	flex-direction: column;
+	min-height: 170px;
   }
 
   label {

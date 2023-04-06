@@ -129,16 +129,16 @@ export default function DateConverter() {
                     display abbreviated date
                 </label>
                 <div className='btn-group'>
-                <Button 
-                    type="button" 
-                    buttonText="Change options" 
-                    onClick={changeOptions}/>
-                <Button 
-                    type="button" 
-                    buttonText="Convert another date" 
-                    onClick={() => { 
-                        setIsDateSubmitted(false); 
-                        resetDate() }}/>
+                    <Button 
+                        type="button" 
+                        buttonText="Change options" 
+                        onClick={changeOptions}/>
+                    <Button 
+                        type="button" 
+                        buttonText="Convert another date" 
+                        onClick={() => { 
+                            setIsDateSubmitted(false); 
+                            resetDate() }}/>
                 </div>
             </CardSection>
           );
