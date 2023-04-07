@@ -69,13 +69,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _CardSection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardSection */ "./src/react-app/src/components/CardSection.js");
-/* harmony import */ var _DateFieldset__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DateFieldset */ "./src/react-app/src/components/DateFieldset.js");
-/* harmony import */ var _OptionsFieldset__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OptionsFieldset */ "./src/react-app/src/components/OptionsFieldset.js");
-/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Button */ "./src/react-app/src/components/Button.js");
-/* harmony import */ var _utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/dateConversions */ "./src/react-app/src/utils/dateConversions.js");
-
-
+/* harmony import */ var _FormCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormCard */ "./src/react-app/src/components/FormCard.js");
+/* harmony import */ var _ResultsCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ResultsCard */ "./src/react-app/src/components/ResultsCard.js");
+/* harmony import */ var _utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/dateConversions */ "./src/react-app/src/utils/dateConversions.js");
 
 
 
@@ -86,42 +82,41 @@ function DateConverter() {
   const [month, setMonth] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(today.getMonth() + 1);
   const [day, setDay] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(today.getDate());
   const [year, setYear] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(today.getFullYear());
-  const [era, setEra] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('A.D. / C.E.');
+  const [era, setEra] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("A.D. / C.E.");
   const [isDisplayYearChecked, setIsDisplayYearChecked] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
-  const [yearDisplayOption, setYearDisplayOption] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('secularNotation');
+  const [yearDisplayOption, setYearDisplayOption] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("secularNotation");
   const [isDateSubmitted, setIsDateSubmitted] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [submittedFormData, setSubmittedFormData] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const [isAbbreviatedChecked, setIsAbbreviatedChecked] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const {
     romanDate,
     formattedYear
-  } = submittedFormData ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.outputFormattedRomanDate)(submittedFormData) : {
+  } = submittedFormData ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__.outputFormattedRomanDate)(submittedFormData) : {
     romanDate: null,
     formattedYear: null
   };
   function handleMonthChange(e) {
-    const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.checkBeforeRomeFounded)(day, e.target.value, year, era);
+    const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__.checkBeforeRomeFounded)(day, e.target.value, year, era);
     if (isBeforeRomeFounded) {
       setYearDisplayOption(null);
     }
     setMonth(Number(e.target.value));
   }
   function handleDayChange(e) {
-    const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.checkBeforeRomeFounded)(e.target.value, month, year, era);
+    const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__.checkBeforeRomeFounded)(e.target.value, month, year, era);
     if (isBeforeRomeFounded) {
       setYearDisplayOption(null);
     }
     setDay(Number(e.target.value));
   }
   function handleYearChange(e) {
-    const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.checkBeforeRomeFounded)(day, month, e.target.value, era);
+    const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__.checkBeforeRomeFounded)(day, month, e.target.value, era);
     if (isBeforeRomeFounded) {
       setYearDisplayOption(null);
     }
     setYear(Number(e.target.value));
   }
   function handleEraChange(e) {
-    const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.checkBeforeRomeFounded)(day, month, year, e.target.value);
+    const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__.checkBeforeRomeFounded)(day, month, year, e.target.value);
     if (isBeforeRomeFounded) {
       setYearDisplayOption(null);
     }
@@ -131,7 +126,7 @@ function DateConverter() {
     if (!e.target.checked) {
       setYearDisplayOption(null);
     }
-    const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.checkBeforeRomeFounded)(day, month, year, era);
+    const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__.checkBeforeRomeFounded)(day, month, year, era);
     if (isBeforeRomeFounded) {
       setYearDisplayOption(null);
     }
@@ -148,9 +143,9 @@ function DateConverter() {
     const formData = new FormData(e.target);
 
     //normalize submitted form data and save in state
-    setSubmittedFormData((0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.normalizeFormData)(formData));
+    setSubmittedFormData((0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__.normalizeFormData)(formData));
 
-    //Change state so results card is shown instead of form 
+    //Change state so results card is shown instead of form
     setIsDateSubmitted(true);
   }
   function changeOptions() {
@@ -160,29 +155,25 @@ function DateConverter() {
     setEra(submittedFormData.era);
     setIsDisplayYearChecked(submittedFormData.displayYear);
     setYearDisplayOption(submittedFormData.yearDisplayOption);
-    setIsAbbreviatedChecked(false);
 
-    //Change state so form is shown 
+    //Change state so form is shown
     setIsDateSubmitted(false);
   }
   function resetDate() {
     setDay(today.getDate());
     setMonth(today.getMonth() + 1);
     setYear(today.getFullYear());
-    setEra('A.D. / C.E.');
+    setEra("A.D. / C.E.");
     setIsDisplayYearChecked(true);
     setYearDisplayOption(null);
-    setIsAbbreviatedChecked(false);
     setSubmittedFormData(null);
   }
+  function handleConvertAnotherDate() {
+    setIsDateSubmitted(false);
+    resetDate();
+  }
   if (!isDateSubmitted) {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_CardSection__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      className: "form-card",
-      title: "Find the Roman date for:"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
-      method: "post",
-      onSubmit: handleSubmit
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DateFieldset__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_FormCard__WEBPACK_IMPORTED_MODULE_1__["default"], {
       month: month,
       handleMonthChange: handleMonthChange,
       day: day,
@@ -190,42 +181,21 @@ function DateConverter() {
       year: year,
       handleYearChange: handleYearChange,
       era: era,
-      handleEraChange: handleEraChange
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_OptionsFieldset__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      isBeforeRomeFounded: (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.checkBeforeRomeFounded)(day, month, year, era),
+      handleEraChange: handleEraChange,
+      isBeforeRomeFounded: (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__.checkBeforeRomeFounded)(day, month, year, era),
       isDisplayYearChecked: isDisplayYearChecked,
       handleDisplayYearChange: handleDisplayYearChange,
       yearDisplayOption: yearDisplayOption,
-      handleYearDisplayOptionChange: handleYearDisplayOptionChange
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "btn-group"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      type: "submit",
-      buttonText: "Submit"
-    }))));
+      handleYearDisplayOptionChange: handleYearDisplayOptionChange,
+      handleSubmit: handleSubmit
+    });
   } else {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_CardSection__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      className: "results-card",
-      title: "Roman date:"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, isAbbreviatedChecked ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.abbreviateDate)(romanDate) : romanDate), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, isAbbreviatedChecked ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.abbreviateYear)(formattedYear) : formattedYear)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      type: "checkbox",
-      name: "abbreviated",
-      checked: isAbbreviatedChecked,
-      onChange: e => setIsAbbreviatedChecked(!isAbbreviatedChecked)
-    }), "display abbreviated date"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "btn-group"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      type: "button",
-      buttonText: "Change options",
-      onClick: changeOptions
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      type: "button",
-      buttonText: "Convert another date",
-      onClick: () => {
-        setIsDateSubmitted(false);
-        resetDate();
-      }
-    })));
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ResultsCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      romanDate: romanDate,
+      formattedYear: formattedYear,
+      changeOptions: changeOptions,
+      handleConvertAnotherDate: handleConvertAnotherDate
+    });
   }
 }
 
@@ -335,6 +305,76 @@ function DateFieldset(_ref) {
 
 /***/ }),
 
+/***/ "./src/react-app/src/components/FormCard.js":
+/*!**************************************************!*\
+  !*** ./src/react-app/src/components/FormCard.js ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ FormCard; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _CardSection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardSection */ "./src/react-app/src/components/CardSection.js");
+/* harmony import */ var _DateFieldset__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DateFieldset */ "./src/react-app/src/components/DateFieldset.js");
+/* harmony import */ var _OptionsFieldset__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OptionsFieldset */ "./src/react-app/src/components/OptionsFieldset.js");
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Button */ "./src/react-app/src/components/Button.js");
+
+
+
+
+
+
+function FormCard(_ref) {
+  let {
+    month,
+    handleMonthChange,
+    day,
+    handleDayChange,
+    year,
+    handleYearChange,
+    era,
+    handleEraChange,
+    isBeforeRomeFounded,
+    isDisplayYearChecked,
+    handleDisplayYearChange,
+    yearDisplayOption,
+    handleYearDisplayOptionChange,
+    handleSubmit
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_CardSection__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    className: "form-card",
+    title: "Find the Roman date for:"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
+    method: "post",
+    onSubmit: handleSubmit
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DateFieldset__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    month: month,
+    handleMonthChange: handleMonthChange,
+    day: day,
+    handleDayChange: handleDayChange,
+    year: year,
+    handleYearChange: handleYearChange,
+    era: era,
+    handleEraChange: handleEraChange
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_OptionsFieldset__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    isBeforeRomeFounded: isBeforeRomeFounded,
+    isDisplayYearChecked: isDisplayYearChecked,
+    handleDisplayYearChange: handleDisplayYearChange,
+    yearDisplayOption: yearDisplayOption,
+    handleYearDisplayOptionChange: handleYearDisplayOptionChange
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "btn-group"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    type: "submit",
+    buttonText: "Submit"
+  }))));
+}
+
+/***/ }),
+
 /***/ "./src/react-app/src/components/OptionsFieldset.js":
 /*!*********************************************************!*\
   !*** ./src/react-app/src/components/OptionsFieldset.js ***!
@@ -390,6 +430,56 @@ function OptionsFieldset(_ref) {
     onChange: handleDisplayYearChange,
     checked: isDisplayYearChecked
   }), "display year"), isDisplayYearChecked ? yearDisplayOptionsRadio : null);
+}
+
+/***/ }),
+
+/***/ "./src/react-app/src/components/ResultsCard.js":
+/*!*****************************************************!*\
+  !*** ./src/react-app/src/components/ResultsCard.js ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ ResultsCard; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _CardSection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardSection */ "./src/react-app/src/components/CardSection.js");
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Button */ "./src/react-app/src/components/Button.js");
+/* harmony import */ var _utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/dateConversions */ "./src/react-app/src/utils/dateConversions.js");
+
+
+
+
+
+function ResultsCard(_ref) {
+  let {
+    romanDate,
+    formattedYear,
+    changeOptions,
+    handleConvertAnotherDate
+  } = _ref;
+  const [isAbbreviatedChecked, setIsAbbreviatedChecked] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_CardSection__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    className: "results-card",
+    title: "Roman date:"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, isAbbreviatedChecked ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__.abbreviateDate)(romanDate) : romanDate), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, isAbbreviatedChecked ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__.abbreviateYear)(formattedYear) : formattedYear)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "checkbox",
+    name: "abbreviated",
+    onChange: e => setIsAbbreviatedChecked(!isAbbreviatedChecked)
+  }), "display abbreviated date"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "btn-group"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "button",
+    buttonText: "Change options",
+    onClick: changeOptions
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "button",
+    buttonText: "Convert another date",
+    onClick: handleConvertAnotherDate
+  })));
 }
 
 /***/ }),
