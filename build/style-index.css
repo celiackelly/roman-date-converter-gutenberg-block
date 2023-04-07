@@ -75,5 +75,8 @@
 .wp-block-create-block-roman-date-converter .italics {
   font-style: italic;
 }
+.wp-block-create-block-roman-date-converter .block {
+  display: block;
+}
 
 /*# sourceMappingURL=style-index.css.map*/

@@ -448,7 +448,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _CardSection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardSection */ "./src/react-app/src/components/CardSection.js");
 /* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Button */ "./src/react-app/src/components/Button.js");
-/* harmony import */ var _utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/dateConversions */ "./src/react-app/src/utils/dateConversions.js");
+/* harmony import */ var _TweetLink__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TweetLink */ "./src/react-app/src/components/TweetLink.js");
+/* harmony import */ var _utils_dateConversions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/dateConversions */ "./src/react-app/src/utils/dateConversions.js");
+
 
 
 
@@ -462,14 +464,21 @@ function ResultsCard(_ref) {
     handleConvertAnotherDate
   } = _ref;
   const [isAbbreviatedChecked, setIsAbbreviatedChecked] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+
+  //do I need to make these into state for them to update appropriately and cause the Tweet button to rerender? or no?
+  let dateString = isAbbreviatedChecked ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_4__.abbreviateDate)(romanDate) : romanDate;
+  let yearString = isAbbreviatedChecked ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_4__.abbreviateYear)(formattedYear) : formattedYear;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_CardSection__WEBPACK_IMPORTED_MODULE_1__["default"], {
     className: "results-card",
     title: "Roman date:"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, isAbbreviatedChecked ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__.abbreviateDate)(romanDate) : romanDate), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, isAbbreviatedChecked ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_3__.abbreviateYear)(formattedYear) : formattedYear)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, dateString), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, yearString)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "checkbox",
     name: "abbreviated",
     onChange: e => setIsAbbreviatedChecked(!isAbbreviatedChecked)
-  }), "display abbreviated date"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), "display abbreviated date"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_TweetLink__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    dateString: dateString,
+    yearString: yearString
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "btn-group"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
     type: "button",
@@ -480,6 +489,41 @@ function ResultsCard(_ref) {
     buttonText: "Convert another date",
     onClick: handleConvertAnotherDate
   })));
+}
+
+/***/ }),
+
+/***/ "./src/react-app/src/components/TweetLink.js":
+/*!***************************************************!*\
+  !*** ./src/react-app/src/components/TweetLink.js ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ TweetLink; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_formatTweetText__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/formatTweetText */ "./src/react-app/src/utils/formatTweetText.js");
+
+
+
+function TweetLink(_ref) {
+  let {
+    dateString,
+    yearString
+  } = _ref;
+  let tweetTextParamValue = (0,_utils_formatTweetText__WEBPACK_IMPORTED_MODULE_1__.formatTweetText)(dateString, yearString);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: `https://twitter.com/intent/tweet?text=${tweetTextParamValue}&screen_name=salvi_sitis&ref_src=twsrc%5Etfw`,
+    class: "twitter-share-button block",
+    "data-show-count": "false"
+  }, "Tweet"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("script", {
+    async: true,
+    src: "https://platform.twitter.com/widgets.js",
+    charset: "utf-8"
+  }));
 }
 
 /***/ }),
@@ -774,6 +818,25 @@ function outputFormattedRomanDate(formData) {
     romanDate: romanDate,
     formattedYear: formattedYear
   };
+}
+
+/***/ }),
+
+/***/ "./src/react-app/src/utils/formatTweetText.js":
+/*!****************************************************!*\
+  !*** ./src/react-app/src/utils/formatTweetText.js ***!
+  \****************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "formatTweetText": function() { return /* binding */ formatTweetText; }
+/* harmony export */ });
+function formatTweetText(romanDate, formattedYear) {
+  let romanDateParamString = romanDate.replaceAll(" ", "%20");
+  let formattedYearParamString = formattedYear ? "," + formattedYear.replaceAll(" ", "%20") : "";
+  let textParam = `${romanDateParamString}${formattedYearParamString}`;
+  return textParam;
 }
 
 /***/ }),
