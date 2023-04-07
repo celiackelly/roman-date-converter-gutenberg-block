@@ -11,7 +11,6 @@ export default function ResultsCard({
 }) {
 	const [isAbbreviatedChecked, setIsAbbreviatedChecked] = useState(false);
 
-	//do I need to make these into state for them to update appropriately and cause the Tweet button to rerender? or no?
 	let dateString = isAbbreviatedChecked ? abbreviateDate(romanDate) : romanDate;
 	let yearString = isAbbreviatedChecked
 		? abbreviateYear(formattedYear)
