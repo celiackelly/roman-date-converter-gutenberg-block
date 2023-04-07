@@ -3,7 +3,7 @@ import { formatTweetText } from "../utils/formatTweetText";
 
 export default function TweetLink({ dateString, yearString }) {
 	let tweetTextParamValue = formatTweetText(dateString, yearString);
-
+	//Twitter script is not loading at the right time. Need twttr.widgets.load(); or something, but how?
 	return (
 		<>
 			<a
@@ -13,6 +13,11 @@ export default function TweetLink({ dateString, yearString }) {
 			>
 				Tweet
 			</a>
+			<script
+				async
+				src="https://platform.twitter.com/widgets.js"
+				charset="utf-8"
+			></script>
 		</>
 	);
 }

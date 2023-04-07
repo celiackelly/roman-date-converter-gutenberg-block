@@ -18,11 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function App() {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("script", {
-    async: true,
-    src: "https://platform.twitter.com/widgets.js",
-    charset: "utf-8"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_DateConverter__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_DateConverter__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
 
 /***/ }),
@@ -540,11 +536,16 @@ function TweetLink(_ref) {
     yearString
   } = _ref;
   let tweetTextParamValue = (0,_utils_formatTweetText__WEBPACK_IMPORTED_MODULE_1__.formatTweetText)(dateString, yearString);
+  //Twitter script is not loading at the right time. Need twttr.widgets.load(); or something, but how?
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: `https://twitter.com/intent/tweet?text=${tweetTextParamValue}&screen_name=salvi_sitis&ref_src=twsrc%5Etfw`,
     class: "twitter-share-button block",
     "data-show-count": "false"
-  }, "Tweet"));
+  }, "Tweet"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("script", {
+    async: true,
+    src: "https://platform.twitter.com/widgets.js",
+    charset: "utf-8"
+  }));
 }
 
 /***/ }),
@@ -855,7 +856,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 function formatTweetText(romanDate, formattedYear) {
   let romanDateParamString = romanDate.replaceAll(" ", "%20");
-  let formattedYearParamString = formattedYear ? ", " + formattedYear.replaceAll(" ", "%20") : "";
+  let formattedYearParamString = formattedYear ? ",%20" + formattedYear.replaceAll(" ", "%20") : "";
   let textParam = `${romanDateParamString}${formattedYearParamString}`;
   return textParam;
 }

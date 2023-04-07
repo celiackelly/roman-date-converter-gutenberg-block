@@ -27,6 +27,7 @@ add_action( 'init', 'create_block_roman_date_converter_block_init' );
 
 function create_block_roman_date_converter_render_callback( $atts, $content, $block) {
 	// Naming convention: '{namespace}-{blockname}-view-script'
+	//Enqueing the script manually may not be necessary anymore- https://wordpress.stackexchange.com/questions/402946/does-viewscript-in-block-json-actually-enqueue-a-js-file
 	wp_enqueue_script( 'create-block-roman-date-converter-view-script' );
 	ob_start();
 	require plugin_dir_path( __FILE__ ) . 'build/template.php';
