@@ -1,7 +1,6 @@
 import { React, useState } from "@wordpress/element";
 import CardSection from "./CardSection";
 import Button from "./Button";
-import TweetLink from "./TweetLink";
 import { abbreviateDate, abbreviateYear } from "../utils/dateConversions";
 
 export default function ResultsCard({
@@ -33,7 +32,6 @@ export default function ResultsCard({
 					></input>
 					display abbreviated date
 				</label>
-				<TweetLink dateString={dateString} yearString={yearString} />
 			</div>
 			<div className="btn-group">
 				<Button
