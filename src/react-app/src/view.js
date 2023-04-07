@@ -1,20 +1,13 @@
-import { createRoot, render, createElement } from '@wordpress/element';
-import DateConverter from './components/DateConverter';
-
-function App() {
-  return (
-    <DateConverter />
-  );
-}
-
+import { createRoot, render, createElement } from "@wordpress/element";
+import App from "./App";
 
 addEventListener("DOMContentLoaded", (event) => {
-  const domElement = document.getElementById( 'react-app' );
-  const uiElement = createElement( App );
+	const domElement = document.getElementById("react-app");
+	const uiElement = createElement(App);
 
-  if ( createRoot ) {
-    createRoot( domElement ).render( uiElement );
-  } else {
-    render( uiElement, domElement );
-  }
+	if (createRoot) {
+		createRoot(domElement).render(uiElement);
+	} else {
+		render(uiElement, domElement);
+	}
 });

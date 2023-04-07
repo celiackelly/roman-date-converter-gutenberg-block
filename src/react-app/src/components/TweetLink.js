@@ -13,11 +13,6 @@ export default function TweetLink({ dateString, yearString }) {
 			>
 				Tweet
 			</a>
-			<script
-				async
-				src="https://platform.twitter.com/widgets.js"
-				charset="utf-8"
-			></script>
 		</>
 	);
 }

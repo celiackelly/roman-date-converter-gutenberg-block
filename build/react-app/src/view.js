@@ -2,6 +2,31 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/react-app/src/App.js":
+/*!**********************************!*\
+  !*** ./src/react-app/src/App.js ***!
+  \**********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ App; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_DateConverter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/DateConverter */ "./src/react-app/src/components/DateConverter.js");
+
+
+function App() {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("script", {
+    async: true,
+    src: "https://platform.twitter.com/widgets.js",
+    charset: "utf-8"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_DateConverter__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+}
+
+/***/ }),
+
 /***/ "./src/react-app/src/components/Button.js":
 /*!************************************************!*\
   !*** ./src/react-app/src/components/Button.js ***!
@@ -519,11 +544,7 @@ function TweetLink(_ref) {
     href: `https://twitter.com/intent/tweet?text=${tweetTextParamValue}&screen_name=salvi_sitis&ref_src=twsrc%5Etfw`,
     class: "twitter-share-button block",
     "data-show-count": "false"
-  }, "Tweet"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("script", {
-    async: true,
-    src: "https://platform.twitter.com/widgets.js",
-    charset: "utf-8"
-  }));
+  }, "Tweet"));
 }
 
 /***/ }),
@@ -928,15 +949,12 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_DateConverter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/DateConverter */ "./src/react-app/src/components/DateConverter.js");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App */ "./src/react-app/src/App.js");
 
 
-function App() {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_DateConverter__WEBPACK_IMPORTED_MODULE_1__["default"], null);
-}
 addEventListener("DOMContentLoaded", event => {
-  const domElement = document.getElementById('react-app');
-  const uiElement = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(App);
+  const domElement = document.getElementById("react-app");
+  const uiElement = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_App__WEBPACK_IMPORTED_MODULE_1__["default"]);
   if (_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createRoot) {
     (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createRoot)(domElement).render(uiElement);
   } else {
