@@ -158,7 +158,7 @@ function formatYear(year, era, yearDisplayOption) {
         notation = (era === 'B.C. / B.C.E.') ? 'ante Christum natum' : 'post Christum natum'
     }
 
-    return `${integerToRomanNumeral(year)} ${notation}`
+    return `anno ${integerToRomanNumeral(year)} ${notation}`
 }
 
 export function checkLeapYear(year) {

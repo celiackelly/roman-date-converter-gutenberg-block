@@ -586,7 +586,7 @@ function formatYear(year, era, yearDisplayOption) {
   if (yearDisplayOption === 'christianNotation') {
     notation = era === 'B.C. / B.C.E.' ? 'ante Christum natum' : 'post Christum natum';
   }
-  return `${integerToRomanNumeral(year)} ${notation}`;
+  return `anno ${integerToRomanNumeral(year)} ${notation}`;
 }
 function checkLeapYear(year) {
   if (year % 4 !== 0) {
