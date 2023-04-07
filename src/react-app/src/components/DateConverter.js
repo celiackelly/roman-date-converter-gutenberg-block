@@ -3,7 +3,11 @@ import CardSection from './CardSection';
 import DateFieldset from './DateFieldset';
 import OptionsFieldset from './OptionsFieldset';
 import Button from './Button';
-import { outputFormattedRomanDate, normalizeFormData, abbreviateDate, checkBeforeRomeFounded } from '../utils/dateConversions'
+import { outputFormattedRomanDate, 
+        normalizeFormData, 
+        abbreviateDate, 
+        abbreviateYear,
+        checkBeforeRomeFounded } from '../utils/dateConversions'
 
 export default function DateConverter() {
     const today = new Date()  
@@ -17,7 +21,7 @@ export default function DateConverter() {
     const [submittedFormData, setSubmittedFormData] = useState(null) 
     const [isAbbreviatedChecked, setIsAbbreviatedChecked] = useState(false)
 
-    const romanDate = submittedFormData ? outputFormattedRomanDate(submittedFormData) : null
+    const { romanDate, formattedYear } = submittedFormData ? outputFormattedRomanDate(submittedFormData) : { romanDate: null, formattedYear: null }
 
     function handleMonthChange(e) {
         const isBeforeRomeFounded = checkBeforeRomeFounded(day, e.target.value, year, era)
@@ -123,7 +127,10 @@ export default function DateConverter() {
       } else {
           return (
             <CardSection className="results-card" title="Roman date:">
-                <p>{isAbbreviatedChecked ? abbreviateDate(romanDate) : romanDate}</p>
+                <div>
+                    <p>{isAbbreviatedChecked ? abbreviateDate(romanDate) : romanDate}</p>
+                    <p>{isAbbreviatedChecked ? abbreviateYear(formattedYear) : formattedYear}</p>
+                </div>
                 <label>
                     <input type="checkbox" name="abbreviated" checked={isAbbreviatedChecked} onChange={ (e)=> setIsAbbreviatedChecked(!isAbbreviatedChecked)}></input>
                     display abbreviated date

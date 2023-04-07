@@ -92,7 +92,13 @@ function DateConverter() {
   const [isDateSubmitted, setIsDateSubmitted] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [submittedFormData, setSubmittedFormData] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [isAbbreviatedChecked, setIsAbbreviatedChecked] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const romanDate = submittedFormData ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.outputFormattedRomanDate)(submittedFormData) : null;
+  const {
+    romanDate,
+    formattedYear
+  } = submittedFormData ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.outputFormattedRomanDate)(submittedFormData) : {
+    romanDate: null,
+    formattedYear: null
+  };
   function handleMonthChange(e) {
     const isBeforeRomeFounded = (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.checkBeforeRomeFounded)(day, e.target.value, year, era);
     if (isBeforeRomeFounded) {
@@ -201,7 +207,7 @@ function DateConverter() {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_CardSection__WEBPACK_IMPORTED_MODULE_1__["default"], {
       className: "results-card",
       title: "Roman date:"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, isAbbreviatedChecked ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.abbreviateDate)(romanDate) : romanDate), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, isAbbreviatedChecked ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.abbreviateDate)(romanDate) : romanDate), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, isAbbreviatedChecked ? (0,_utils_dateConversions__WEBPACK_IMPORTED_MODULE_5__.abbreviateYear)(formattedYear) : formattedYear)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
       type: "checkbox",
       name: "abbreviated",
       checked: isAbbreviatedChecked,
@@ -397,6 +403,7 @@ function OptionsFieldset(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "abbreviateDate": function() { return /* binding */ abbreviateDate; },
+/* harmony export */   "abbreviateYear": function() { return /* binding */ abbreviateYear; },
 /* harmony export */   "checkBeforeRomeFounded": function() { return /* binding */ checkBeforeRomeFounded; },
 /* harmony export */   "checkLeapYear": function() { return /* binding */ checkLeapYear; },
 /* harmony export */   "normalizeFormData": function() { return /* binding */ normalizeFormData; },
@@ -643,20 +650,24 @@ function normalizeFormData(formData) {
   }
   return normalizedData;
 }
-function abbreviateDate(fullDateString) {
-  let abbreviatedDate = fullDateString;
+function abbreviateDate(dateString) {
+  let abbreviatedDate = dateString;
   abbreviatedDate = abbreviatedDate.replace('ante diem', 'a.d.');
 
   //abbreviate day/month; remember to include periods
   abbreviatedDate = abbreviatedDate.replace(/(prid|Kal|Id|Non|Ian|Feb|Mart|Apr|Aug|Sept|Oct|Nov|Dec)\w+/g, '$1.');
+  return abbreviatedDate;
+}
+function abbreviateYear(yearString) {
+  let abbreviatedYear = yearString;
 
   //abbreviate year notation 
-  abbreviatedDate = abbreviatedDate.replace('ab urbe condita', 'A.U.C.');
-  abbreviatedDate = abbreviatedDate.replace('ante aeram vulgarem', 'ante aer. vulg.');
-  abbreviatedDate = abbreviatedDate.replace('aerae vulgaris', 'aer. vulg.');
-  abbreviatedDate = abbreviatedDate.replace('ante Christum natum', 'a.C.n.');
-  abbreviatedDate = abbreviatedDate.replace('post Christum natum', 'p.C.n.');
-  return abbreviatedDate;
+  abbreviatedYear = abbreviatedYear.replace('ab urbe condita', 'A.U.C.');
+  abbreviatedYear = abbreviatedYear.replace('ante aeram vulgarem', 'ante aer. vulg.');
+  abbreviatedYear = abbreviatedYear.replace('aerae vulgaris', 'aer. vulg.');
+  abbreviatedYear = abbreviatedYear.replace('ante Christum natum', 'a.C.n.');
+  abbreviatedYear = abbreviatedYear.replace('post Christum natum', 'p.C.n.');
+  return abbreviatedYear;
 }
 function outputFormattedRomanDate(formData) {
   const {
@@ -669,7 +680,10 @@ function outputFormattedRomanDate(formData) {
   } = formData;
   const romanDate = convertToRomanDate(day, month, year);
   const formattedYear = displayYear ? formatYear(year, era, yearDisplayOption) : '';
-  return `${romanDate} ${formattedYear}`;
+  return {
+    romanDate: romanDate,
+    formattedYear: formattedYear
+  };
 }
 
 /***/ }),
