@@ -87,7 +87,7 @@ function DateConverter() {
   const [day, setDay] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(today.getDate());
   const [year, setYear] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(today.getFullYear());
   const [era, setEra] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('A.D. / C.E.');
-  const [isDisplayYearChecked, setIsDisplayYearChecked] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [isDisplayYearChecked, setIsDisplayYearChecked] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [yearDisplayOption, setYearDisplayOption] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('secularNotation');
   const [isDateSubmitted, setIsDateSubmitted] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [submittedFormData, setSubmittedFormData] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
@@ -164,7 +164,7 @@ function DateConverter() {
     setMonth(today.getMonth() + 1);
     setYear(today.getFullYear());
     setEra('A.D. / C.E.');
-    setIsDisplayYearChecked(false);
+    setIsDisplayYearChecked(true);
     setYearDisplayOption(null);
     setIsAbbreviatedChecked(false);
     setSubmittedFormData(null);
